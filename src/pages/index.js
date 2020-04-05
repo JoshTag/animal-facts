@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import anime from "animejs"
 import styled from "styled-components"
-import Layout from "../components/Layout"
+import Layout from "../components/Layouts"
 
 // Path imports
 import giraffe from "./../../data/animals/giraffe.json"

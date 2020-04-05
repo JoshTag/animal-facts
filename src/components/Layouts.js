@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql, useStaticQuery } from "gatsby" 
 import { Helmet } from "react-helmet"
-import "./Layout.css"
+import "./Layouts.css"
 
 const Layout = ({ children }) => {
 
