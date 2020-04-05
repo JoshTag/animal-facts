@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import anime from "animejs"
 import styled from "styled-components"
-import Layout from "../components/Layouts"
+import Layout from "../components/Layout"
 
 // Path imports
 import giraffe from "./../../data/animals/giraffe.json"
@@ -15,6 +15,7 @@ import platypus from "./../../data/animals/platypus.json"
 import panda from "./../../data/animals/panda.json"
 import narwhal from "./../../data/animals/narwhal.json"
 import penguin from "./../../data/animals/penguin.json"
+import tiger from "./../../data/animals/tiger.json"
 
 const SVGContainer = styled.div`
   width: 400px;
@@ -158,6 +159,7 @@ const IndexPage = () => {
         <button onClick={() => changeShapes(panda)}>panda</button>
         <button onClick={() => changeShapes(narwhal)}>narwhal</button>
         <button onClick={() => changeShapes(penguin)}>penguin</button>
+        <button onClick={() => changeShapes(tiger)}>tiger</button>
     </Layout>
   )
 }
