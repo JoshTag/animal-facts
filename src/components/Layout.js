@@ -1,10 +1,14 @@
 import React from "react"
-import { graphql, useStaticQuery } from "gatsby" 
+import { graphql, useStaticQuery } from "gatsby"
 import { Helmet } from "react-helmet"
+import styled from "styled-components"
 import "./Layout.css"
 
-const Layout = ({ children }) => {
+const Main = styled.main`
+  background-color: #e4e4e4;
+`
 
+const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
     query MyQuery {
       site {
@@ -17,20 +21,21 @@ const Layout = ({ children }) => {
     }
   `)
 
-  const siteMetadata = data.site.siteMetadata
+  const { description, keywords, title } = data.site.siteMetadata
 
   return (
     <>
       <Helmet>
         <meta charSet="utf-8" />
-        <meta name="description" content={siteMetadata.description} />
-        <meta name="keywords" content={siteMetadata.keywords} />
+        <meta name="description" content={description} />
+        <meta name="keywords" content={keywords} />
         <html lang="en" />
-        <title>{siteMetadata.title}</title>
+        <title>{title}</title>
       </Helmet>
-      <main>{children}</main>
+      <Main>{children}</Main>
+      
     </>
   )
 }
-
+   
 export default Layout

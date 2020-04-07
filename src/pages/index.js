@@ -16,6 +16,7 @@ import panda from "./../../data/animals/panda.json"
 import narwhal from "./../../data/animals/narwhal.json"
 import penguin from "./../../data/animals/penguin.json"
 import tiger from "./../../data/animals/tiger.json"
+import lion from "./../../data/animals/lion.json"
 
 const SVGContainer = styled.div`
   width: 400px;
@@ -160,6 +161,7 @@ const IndexPage = () => {
         <button onClick={() => changeShapes(narwhal)}>narwhal</button>
         <button onClick={() => changeShapes(penguin)}>penguin</button>
         <button onClick={() => changeShapes(tiger)}>tiger</button>
+        <button onClick={() => changeShapes(lion)}>lion</button>
     </Layout>
   )
 }
