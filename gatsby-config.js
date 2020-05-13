@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `Animal Facts`,
-    description: `A site to demonstrate svg animations along with providing interest and funny animal facts`,
+    description: `A site to provide random animal facts`,
     author: `Joshua Taguicana`,
     keywords: ["Animals", "Facts", "Animal Facts"]
   },
