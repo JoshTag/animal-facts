@@ -2,10 +2,13 @@ import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import { Helmet } from "react-helmet"
 import styled from "styled-components"
-import "./Layout.css"
+import "./Layout.scss"
 
 const Main = styled.main`
   background-color: #e4e4e4;
+  height: 100vh;
+  width: 100vw;
+  overflow-y: scroll;
 `
 
 const Layout = ({ children }) => {
@@ -33,9 +36,8 @@ const Layout = ({ children }) => {
         <title>{title}</title>
       </Helmet>
       <Main>{children}</Main>
-      
     </>
   )
 }
-   
+
 export default Layout

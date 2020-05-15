@@ -6,8 +6,9 @@
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
     "animejs": "^3.1.0",
+    "axios": "^0.19.2",
     "gatsby": "^2.19.45",
-    "gatsby-cli": "^2.12.0",
+    "gatsby-cli": "^2.12.21",
     "gatsby-image": "^2.2.44",
     "gatsby-plugin-manifest": "^2.2.48",
     "gatsby-plugin-offline": "^3.0.41",
