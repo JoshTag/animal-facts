@@ -4,7 +4,7 @@ import styled from "styled-components"
 const SVGContainer = styled.div`
 width: 300px;
 height: 300px;
-margin: 0 auto;
+margin: 3rem auto;
 `
 
 const SVG = styled.svg`

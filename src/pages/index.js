@@ -1,30 +1,35 @@
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
 import anime from "animejs"
-import styled from "styled-components"
 import axios from "axios"
 import Layout from "./../components/Layout/Layout"
 import Animals from "./../components/Animals/Animals"
 import Facts from "./../components/Facts/Facts"
 import Controls from "./../components/Controls/Controls"
-import data from "./../../data/data.js"
-
-const Header = styled.h1`
-  text-align: center;
-  padding: 2.5rem 0;
-  margin: 0;
-`
+import themes from "./../styles/themes"
 
 const IndexPage = () => {
   const [animalFact, setAnimalFact] = useState({})
+  const [colour, setColour] = useState(`#e4e4e4`)
 
   // GET animal fact
   const getFact = async animal => {
-    await axios
-      .get(`http://localhost:5000/api/facts/${animal}?random=true`)
-      .then(res => {
-        setAnimalFact(res.data.data)
-      })
-      .catch(err => alert(err))
+    try {
+      const res = await axios.get(`http://localhost:5000/api/facts/${animal}?random=true`)
+      const data = await res.data.data
+      setAnimalFact(data)
+      changeColour(data.name)
+    } catch (err) {
+      alert(err)
+    }
+  }
+
+
+  // Set colour theme based on animal
+  const changeColour = animal => {
+    const animalColour = Object.keys(themes).find(item => {
+      return item === animal
+    })
+    setColour(themes[animalColour])
   }
 
   // GET animal and changes SVG path
@@ -38,31 +43,40 @@ const IndexPage = () => {
     })
 
     shape.forEach((path, index) => {
+      const randomNumber = Math.random() * (1200 - 400) + 400
       timeline.add(
         {
           targets: path.id,
           d: {
             value: path.d,
-            duration: 500,
+            duration: randomNumber,
             easing: "easeInOutQuad",
           },
           fill: {
             value: path.fill,
-            duration: 500,
+            duration: randomNumber,
             easing: "easeInOutQuad",
           },
         },
-        10 * index
+        Math.random() * (30 - 20) + 20 * index,
+        "easeOutCirc"
       )
     })
   }
 
+  // Gets a random animal fact
+  const randomAnimal = arr => {
+    const random = arr[Math.floor(Math.random() * arr.length)]
+    const animal = random[0]
+    const path = random[1]
+    changeShapes(path, animal)
+  }
+
   return (
-    <Layout>
-      <Header>ANIMAL FACTS</Header>
+    <Layout colour={colour}>
       <Animals />
       <Facts animalFact={animalFact} />
-      <Controls changeShapes={changeShapes} />
+      <Controls changeShapes={changeShapes} randomAnimal={randomAnimal} />
     </Layout>
   )
 }

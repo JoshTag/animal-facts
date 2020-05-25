@@ -1,46 +1,64 @@
 import React, { useEffect, useState } from "react"
 import styled from "styled-components"
+import Select from "./../Select/Select"
 import data from "../../../data/data.js"
 
-const Controls = ({ changeShapes }) => {
-  const [isPlaying, setIsPlaying] = useState(false);
+const ControlContainer = styled.div`
+  width: 300px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+`
+
+const Button = styled.button`
+  width: 100px;
+  border: 1px solid black;
+  border-radius: 3px;
+  background-color: transparent;
+
+  &:hover {
+    cursor: pointer;
+  }
+`
+
+const Controls = ({ changeShapes, randomAnimal }) => {
+  const [isCycling, setIsCycling] = useState(false)
+  const dataArr = Object.entries(data)
 
   useEffect(() => {
-    let interval = null;
-    if (isPlaying) {
+    let interval = null
+    if (isCycling) {
       interval = setInterval(() => {
-        const randomAnimal = data[Math.floor(Math.random() * data.length)]
-        for (let [key, value] of Object.entries(randomAnimal)) {
-          changeShapes(value, key)
-        }
-      }, 5000);
-    } else if (!isPlaying) {
-      clearInterval(interval);
+        randomAnimal(dataArr)
+      }, 4000)
+    } else if (!isCycling) {
+      clearInterval(interval)
     }
     return () => clearInterval(interval)
-  }, [isPlaying, changeShapes])
+  }, [isCycling, changeShapes, randomAnimal, dataArr])
 
-  const startCycle = () => setIsPlaying(true)
-  const stopCycle = () => setIsPlaying(false)
-
-  const selectAnimals = animal => {
-    for (let [key, value] of Object.entries(animal)) {
-      return (
-        <button key={key} onClick={() => changeShapes(value, key)}>
-          {key}
-        </button>
-      )
-    }
-  } 
+  // Start and stop cycle
+  const startCycle = () => {
+    randomAnimal(dataArr)
+    setIsCycling(true)
+  }
+  const stopCycle = () => setIsCycling(false)
 
   return (
-    <>
-      {data.map(animal => {
-        return selectAnimals(animal)
-      })}
-      <button onClick={startCycle}>Cycle</button>
-      <button onClick={stopCycle}>Pause Cycle</button>
-    </>
+    <ControlContainer>
+      <Button onClick={isCycling ? stopCycle : startCycle}>
+        {isCycling ? "Stop" : "Start"}
+      </Button>
+      <Button
+        onClick={() => {
+          stopCycle()
+          randomAnimal(dataArr)
+        }}
+      >
+        Next
+      </Button>
+      <Select stopCycle={stopCycle} changeShapes={changeShapes} />
+    </ControlContainer>
   )
 }
 

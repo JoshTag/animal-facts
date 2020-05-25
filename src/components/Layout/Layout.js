@@ -5,13 +5,15 @@ import styled from "styled-components"
 import "./Layout.scss"
 
 const Main = styled.main`
-  background-color: #e4e4e4;
+  background-color: ${props => props.theme};
   height: 100vh;
   width: 100vw;
   overflow-y: scroll;
+  transition: .6s;
+  transition-timing-function: ease-in-out;
 `
 
-const Layout = ({ children }) => {
+const Layout = ({ children, colour }) => {
   const data = useStaticQuery(graphql`
     query MyQuery {
       site {
@@ -35,7 +37,7 @@ const Layout = ({ children }) => {
         <html lang="en" />
         <title>{title}</title>
       </Helmet>
-      <Main>{children}</Main>
+      <Main theme={colour}>{children}</Main>
     </>
   )
 }
