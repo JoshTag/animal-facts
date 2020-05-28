@@ -7,8 +7,6 @@ import Facts from "./../components/Facts/Facts"
 import Controls from "./../components/Controls/Controls"
 import themes from "./../styles/themes"
 
-const pingURL = process.env.REACT_APP_BACKEND_SERVER || "http://localhost:5000";
-
 const IndexPage = () => {
   const [animalFact, setAnimalFact] = useState({})
   const [colour, setColour] = useState(`#e4e4e4`)
@@ -20,7 +18,7 @@ const IndexPage = () => {
   // GET animal fact
   const getFact = async animal => {
     try {
-      const res = await axios.get(`${pingURL}/api/facts/${animal}?random=true`)
+      const res = await axios.get(`https://secure-hollows-30414.herokuapp.com/api/facts/${animal}?random=true`)
       const data = await res.data.data
       setAnimalFact(data)
       changeColour(data.name)
