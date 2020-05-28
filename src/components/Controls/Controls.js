@@ -30,7 +30,7 @@ const Controls = ({ changeShapes, randomAnimal }) => {
     if (isCycling) {
       interval = setInterval(() => {
         randomAnimal(dataArr)
-      }, 4000)
+      }, 8000)
     } else if (!isCycling) {
       clearInterval(interval)
     }
