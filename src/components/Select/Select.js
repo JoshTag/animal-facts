@@ -7,7 +7,7 @@ import Menu from "@material-ui/core/Menu"
 import MenuItem from "@material-ui/core/MenuItem"
 import MoreVertIcon from "@material-ui/icons/MoreVert"
 
-const ITEM_HEIGHT = 60
+const ITEM_HEIGHT = 100
 
 const Select = ({ stopCycle, changeShapes }) => {
   const [anchorEl, setAnchorEl] = useState(null)
