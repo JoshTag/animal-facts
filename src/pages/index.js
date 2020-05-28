@@ -12,7 +12,7 @@ const IndexPage = () => {
   const [colour, setColour] = useState(`#e4e4e4`)
 
   useEffect(() => {
-    axios.get(`${pingURL}/api/ping`).catch(err => alert(err))
+    axios.get(`https://secure-hollows-30414.herokuapp.com/api/ping`).catch(err => alert(err))
   })
 
   // GET animal fact
