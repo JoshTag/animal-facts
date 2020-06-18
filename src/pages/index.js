@@ -7,18 +7,20 @@ import Facts from "./../components/Facts/Facts"
 import Controls from "./../components/Controls/Controls"
 import themes from "./../styles/themes"
 
+const PINGURL = `https://secure-hollows-30414.herokuapp.com` || `http://localhost:5000`
+
 const IndexPage = () => {
   const [animalFact, setAnimalFact] = useState({})
   const [colour, setColour] = useState(`#e4e4e4`)
 
   useEffect(() => {
-    axios.get(`https://secure-hollows-30414.herokuapp.com/api/ping`).catch(err => alert(err))
-  })
+    axios.get(`${PINGURL}/api/ping`).catch(err => alert(err))
+  }, [])
 
   // GET animal fact
   const getFact = async animal => {
     try {
-      const res = await axios.get(`https://secure-hollows-30414.herokuapp.com/api/facts/${animal}?random=true`)
+      const res = await axios.get(`${PINGURL}/api/facts/${animal}?random=true`)
       const data = await res.data.data
       setAnimalFact(data)
       changeColour(data.name)
