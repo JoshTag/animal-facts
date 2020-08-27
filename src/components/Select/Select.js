@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import data from "../../../data/data.js"
+import {data} from "../../../data/data.js"
 
 // Material UI components
 import IconButton from "@material-ui/core/IconButton"

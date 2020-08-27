@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import styled from "styled-components"
 import Select from "./../Select/Select"
-import data from "../../../data/data.js"
+import {data} from "../../../data/data.js"
 
 const ControlContainer = styled.div`
   width: 300px;
