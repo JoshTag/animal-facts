@@ -7,7 +7,7 @@ import Facts from "./../components/Facts/Facts"
 import Controls from "./../components/Controls/Controls"
 import themes from "./../styles/themes"
 
-const PINGURL = process.env.NODE_ENV === "development" ? `http://localhost:5000` : `https://secure-hollows-30414.herokuapp.com` 
+const PINGURL = `http://localhost:5000` || `https://secure-hollows-30414.herokuapp.com`
 
 const IndexPage = () => {
   const [animalFact, setAnimalFact] = useState({})
@@ -48,22 +48,22 @@ const IndexPage = () => {
     })
 
     shape.forEach((path, index) => {
-      const randomNumber = Math.random() * (1400) + 400
+      // const randomNumber = Math.random() * 1400 + 400
       timeline.add(
         {
           targets: path.id,
           d: {
             value: path.d,
-            duration: randomNumber,
+            duration: 1000,
             easing: "easeInOutQuad",
           },
           fill: {
             value: path.fill,
-            duration: randomNumber,
+            duration: 1000,
             easing: "easeInOutQuad",
           },
         },
-        Math.random() * 40 + 15 * index,
+        25 * (index),
         "easeOutCirc"
       )
     })

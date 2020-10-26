@@ -13,6 +13,7 @@ const themes = {
   tiger: "#FFB833",
   lion: "#FFE15D",
   rhinoceros: "#E3DEC8",
+  capybara: "#E3DEC8",
 }
 
 export default themes

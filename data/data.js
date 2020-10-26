@@ -13,4 +13,5 @@ export const data = {
   tiger: require("./animals/tiger.json"),
   lion: require("./animals/lion.json"),
   rhinoceros: require("./animals/rhinoceros.json"),
+  capybara: require("./animals/capybara.json"),
 }
