@@ -7,7 +7,7 @@ import Facts from "./../components/Facts/Facts"
 import Controls from "./../components/Controls/Controls"
 import themes from "./../styles/themes"
 
-const PINGURL = `http://localhost:5000` || `https://secure-hollows-30414.herokuapp.com`
+const PINGURL = `https://secure-hollows-30414.herokuapp.com` || `http://localhost:5000`
 
 const IndexPage = () => {
   const [animalFact, setAnimalFact] = useState({})
@@ -63,7 +63,7 @@ const IndexPage = () => {
             easing: "easeInOutQuad",
           },
         },
-        25 * (index),
+        25 * index,
         "easeOutCirc"
       )
     })
