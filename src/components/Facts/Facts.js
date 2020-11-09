@@ -19,7 +19,9 @@ const AnimalName = styled.h1`
   }
 `
 
-const AnimalFact = styled.p``
+const AnimalFact = styled.p`
+  text-align: center;
+`
 
 const Facts = ({ animalFact }) => {
   const { name, facts } = animalFact
